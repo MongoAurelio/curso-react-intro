@@ -7,24 +7,32 @@ import { CreateTodoButton } from './CreateTodoButton';
 // import logo from './platzi.webp';
 
 
-
+const defaultTodos = [
+  { text: 'Cortar Cebolla', completed: false },
+  { text: 'Tomar el curso de introducción a React.js', completed: false },
+  { text: 'LALALALA', completed: false},
+  { text: 'Cuarto', completed: false }
+];
 
 function App() {
   return (
-    <div className="App">
-
-    <TodoCounter />
+    <>
+    <TodoCounter completed={16} total={25} />
     <TodoSearch />
 
     <TodoList>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        { defaultTodos.map((todo, index) => (
+          <TodoItem 
+           key={index}
+           text={todo.text} 
+           completed={todo.completed} 
+          />
+        ))}
     </TodoList>
     
      <CreateTodoButton /> 
 
-    </div>
+    </>
   );
 }
 
